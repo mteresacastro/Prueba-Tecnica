@@ -1,0 +1,4 @@
+
+
+composer create-project --prefer-dist laravel/laravel:^9.3.8 proyecto_test
+

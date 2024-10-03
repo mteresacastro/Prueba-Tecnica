@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: prueba-back-php
+    image: bloondedocker/php8.1
+    working_dir: /var/www/html
+    volumes:
+      - ./docker-laravel/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./:/var/www/html/
+    ports:
+      - 5000:80
+      - 5173:5173
+    networks:
+      - prueba-servidor-web
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: prueba-mysql
+    env_file: ./.env
+    volumes:
+      - nuevo-dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: $DB_DATABASE
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+    ports:
+      - 6000:3306
+    networks:
+      - prueba-servidor-web
+    restart: always
+
+networks:
+  prueba-servidor-web:
+volumes:
+  nuevo-dbdata:
