@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Http\Controllers;
 
 
@@ -23,7 +23,7 @@ class PostController extends Controller{
 
         public function show($post){
         return Post::findOrFail($post);
-    }*/
+    }
 
     public function show(Post $post){
         return view('posts.show', ['post'=>$post]);
@@ -49,12 +49,12 @@ class PostController extends Controller{
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
-        Esta forma de crear lo resume Eloquent en lo siguiente:*/
+        Esta forma de crear lo resume Eloquent en lo siguiente:
 
         Post::create($request->validated()/*[
             'title' => $request->input('title'),
             'body' => $request->input('body')
-        ]*/);
+        ]);
 
 
 
@@ -76,7 +76,7 @@ class PostController extends Controller{
         ],[
             'title.required'=>'Error personalizado'
 
-        ]);*/
+        ]);
 
         // $post= Post::find($post); no hace falta si se lo pasamos como parametro al método
         //$post->title = $request->input('title');
@@ -86,7 +86,7 @@ class PostController extends Controller{
         $post->update($request->validated()/*[
             'title' => $request->input('title'),
             'body'=> $request->input('body')
-        ]*/);
+        ]);
 
         session()->flash('status', 'Post actualizado con éxito');
 
@@ -103,4 +103,4 @@ class PostController extends Controller{
 
 
 
-}
+}*/

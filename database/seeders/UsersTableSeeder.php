@@ -28,6 +28,13 @@ class UsersTableSeeder extends Seeder
             'password'=> Hash::make('12345678'),
         ]);
 
+        User::create([
+            'email'=>'customer@correo.com',
+            'status_id'=> 1,
+            'profile_id'=> 2,
+            'password'=> Hash::make('12345678'),
+        ]);
+
         $hobbies = ['teatro', 'cine', 'fútbol', 'pádel', 'baile', 'tocar instrumento', 'senderismo', 'lectura', 'yoga', 'manualidades'];
 
         foreach($hobbies as $hobby)

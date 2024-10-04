@@ -14,17 +14,18 @@
 
     <!--así definimos donde queremnos mostrar el contenido variable-->
    {{-- @yield('content')--}}
-<x-layouts.navigation/>
+   @if(session('status'))
+        <div class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-emerald-500 dark:bg-emerald-700">
+            {{session('status')}}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-red-600 dark:bg-red-700">
+            {{session('error')}}
+        </div>
+    @endif
+   {{$slot}}
 
-
-
-@if(session('status'))
-    <div class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-emerald-500 dark:bg-emerald-700">
-        {{session('status')}}
-    </div>
-@endif
-
-    {{$slot}}
 
 </body>
 
