@@ -34,13 +34,13 @@ class AuthenticatedSessionsController extends Controller
 
     }
 
-  /*  public function destroy(Request $request){
+    public function destroy(Request $request){
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return to_route('login')->with('status', 'Has cerrado sesión. ¡Hasta pronto!');
-    }*/
+        return to_route('login')->with('error', 'Has cerrado sesión. ¡Hasta pronto!');
+    }
 
 }

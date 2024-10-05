@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticatedSessionsController;
@@ -18,7 +18,12 @@ Route::view('/', 'welcome')->name('home');
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/login', [AuthenticatedSessionsController::class, 'store']);
 
-Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+Route::post('/logout', [AuthenticatedSessionsController::class, 'destroy'])->name('logout');
+
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/{customer}', [AdminController::class, 'show'])->name('admin.show');
+//Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
 
 
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');

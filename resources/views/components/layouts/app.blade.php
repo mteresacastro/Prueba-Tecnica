@@ -15,15 +15,25 @@
     <!--así definimos donde queremnos mostrar el contenido variable-->
    {{-- @yield('content')--}}
    @if(session('status'))
-        <div class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-emerald-500 dark:bg-emerald-700">
+        <div id="status-message" class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-emerald-500 dark:bg-emerald-700">
             {{session('status')}}
         </div>
     @endif
     @if(session('error'))
-        <div class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-red-600 dark:bg-red-700">
+        <div id="status-message" class="px-3 py-2 font-bold text-white sm:px-6 lg:px-8 bg-red-600 dark:bg-red-700">
             {{session('error')}}
         </div>
     @endif
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var statusMessage = document.getElementById('status-message');
+            if (statusMessage) {
+                statusMessage.style.display = 'none';
+            }
+        }, 4000); // 4000 milisegundos = 4 segundos
+    });
+    </script>
    {{$slot}}
 
 

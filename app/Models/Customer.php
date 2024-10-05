@@ -15,5 +15,10 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function hobbies()
+    {
+        return $this->belongsToMany(Hobby::class, 'customers_hobbies');
+    }
 }
 
