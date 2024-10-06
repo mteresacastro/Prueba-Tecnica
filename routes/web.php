@@ -22,8 +22,11 @@ Route::post('/logout', [AuthenticatedSessionsController::class, 'destroy'])->nam
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+Route::post('/admin/dashboard', [AdminController::class, 'store'])->name('admin.store');
 Route::get('/admin/{customer}', [AdminController::class, 'show'])->name('admin.show');
-//Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+
+
 
 
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');

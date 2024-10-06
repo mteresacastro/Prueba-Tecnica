@@ -2,7 +2,7 @@
 <x-layouts.app title="Dashboard" meta-description="Dashboard meta description">
 
 <header class="px-6 py-4 space-y-2">
-    <form action="{{route('logout')}}" method="POST">
+    <form action="{{route('logout')}}" method="POST" class="text-right">
         @csrf
         <button class="text-white">Cerrar sesión</button>
     </form>
@@ -10,10 +10,10 @@
     <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Panel de control Administrador</h1>
 </header>
 
-<main class="flex flex-col w-full gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 align-items-center justify-center">
+<main class="flex flex-col w-full gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
 
-    <div class="h-screen flex items-center justify-center">
-        <a href="{{route('login')}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+    <div class="flex items-center justify-center">
+        <a href="{{route('admin.create')}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Crear nuevo cliente
         </a>
     </div>

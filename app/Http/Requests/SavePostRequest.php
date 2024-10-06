@@ -25,8 +25,16 @@ class SavePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=> ['required', 'min:4'],
-            'body'=> ['required']
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'hobbies' => 'required|array|min:1',
         ];
     }
+    public function messages()
+{
+    return [
+        'hobbies.required' => 'Debes seleccionar al menos un hobby.',
+        'hobbies.min' => 'Debes seleccionar al menos un hobby.',
+    ];
+}
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\User;
 use App\Models\Hobby;
+use App\Http\Requests\SavePostRequest;
+use App\Http\Requests\SavePostRequest as RequestsSavePostRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,4 +54,32 @@ class AdminController extends Controller
         ]);
 
     }
+    public function create(){
+
+        $hobbies = Hobby::all();
+
+        return view('admin.create', ['customer' => new Customer, 'hobbies' => $hobbies]);
+    }
+
+    public function store(SavePostRequest $request){
+
+        //valido datos
+        $data = $request->validated();
+
+        //asocio al campo user_id, el id del usuario autenticado:
+        $data['user_id'] = auth()->id();
+
+        //creo el cliente:
+       $customer = Customer::create($data);
+
+       //sincronizo los hobbies:
+       $customer->hobbies()->sync($request->input('hobbies', []));
+
+
+        session()->flash('status', 'Cliente creado con éxito');
+
+        return redirect()->route('admin.dashboard');
+    }
+
+
 }
