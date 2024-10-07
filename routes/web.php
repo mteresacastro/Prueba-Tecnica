@@ -18,8 +18,10 @@ Route::post('/logout', [AuthenticatedSessionsController::class, 'destroy'])->nam
 Route::middleware(['admin'])->group(function(){
 
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
     Route::post('/admin/dashboard', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/customers-by-hobby', [AdminController::class, 'selectHobby'])->name('admin.customers-by-hobby');
     Route::get('/admin/{customer}', [AdminController::class, 'show'])->name('admin.show');
     Route::get('/admin/{customer}/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::patch('/admin/{customer}', [AdminController::class, 'update'])->name('admin.update');

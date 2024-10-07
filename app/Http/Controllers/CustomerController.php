@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Hobby;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -62,4 +63,5 @@ class CustomerController extends Controller
             return redirect()->route('customer.dashboard')->with('error','No se pudieron actualizar los datos');
         }
     }
+
 }

@@ -11,12 +11,20 @@
 </header>
 
 <main class="flex flex-col w-full gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
+    <div class="flex items-center justify-center gap-4">
+        <div class="flex items-center justify-center m-4">
+            <a href="{{route('admin.create')}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Crear nuevo cliente
+            </a>
 
-    <div class="flex items-center justify-center">
-        <a href="{{route('admin.create')}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            Crear nuevo cliente
-        </a>
+        </div>
+        <div class="flex items-center justify-center m-4 ">
+            <a href="{{route('admin.customers-by-hobby')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Buscar clientes por Hobby
+            </a>
+        </div>
     </div>
+
     @foreach ($customers as $customer)
         <div class="max-w-3xl px-4 py-2 space-y-4 bg-white rounded shadow dark:bg-slate-800">
             <ul class="text-xl text-slate-600 dark:text-slate-300 hover:underline">
@@ -27,6 +35,7 @@
             </ul>
         </div>
     @endforeach
+     >
 </main>
 
 

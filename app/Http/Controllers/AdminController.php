@@ -97,4 +97,23 @@ class AdminController extends Controller
         return to_route('admin.dashboard')->with('status', 'Cliente eliminado con éxito');
     }
 
+
+    public function selectHobby(Request $request)
+    {
+        $hobbies = Hobby::all()->map(function ($hobby) {
+            $hobby->name = ucfirst($hobby->name);
+            return $hobby;
+        });
+
+        $customers = collect();
+        $selectedHobby = null;
+
+        if ($request->has('hobby')){
+            $selectedHobby = $request->input('hobby');
+            $customers = Hobby::find($selectedHobby)->customers()->get();
+        }
+        return view('admin.customers-by-hobby', ['hobbies'=> $hobbies, 'customers' => $customers, 'selectedHobby' => $selectedHobby]);
+
+    }
+
 }
