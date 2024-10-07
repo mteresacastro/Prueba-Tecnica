@@ -35,25 +35,6 @@ class AdminController extends Controller
         return view('admin.show', ['customer'=>$customer]);
 
     }
-
-    public function update(Request $request)
-    {
-        $customer = Customer::where('user_id', Auth::id())->first();
-        $user = Auth::user();
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
-        ]);
-
-    }
     public function create(){
 
         $hobbies = Hobby::all();
@@ -81,5 +62,39 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    public function edit(Customer $customer){
+
+        $hobbies = Hobby::all();
+        $customerHobbies = $customer->hobbies->pluck('id')->toArray();
+
+        return view('admin.edit', ['customer' => $customer, 'hobbies' => $hobbies, 'customerHobbies' => $customerHobbies]);
+    }
+
+    public function update(Request $request, Customer $customer)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'hobbies'=> 'array'
+        ]);
+
+        $customer->update($request->only(['name', 'surname']));
+
+        // Sincronizar los hobbies
+        $customer->hobbies()->sync($request->input('hobbies', []));
+
+        session()->flash('status', 'Cliente actualizado con éxito');
+
+        return redirect()->route('admin.dashboard');
+
+    }
+
+    public function destroy(Customer $customer){
+
+        $customer->delete();
+
+        return to_route('admin.dashboard')->with('status', 'Cliente eliminado con éxito');
+    }
 
 }

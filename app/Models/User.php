@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class);
     }
+
+    public function isAdmin(){
+
+        return $this->profile_id === 1;
+    }
 }

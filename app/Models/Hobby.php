@@ -12,6 +12,6 @@ class Hobby extends Model
     protected $fillable = ['name'];
 
     public function customers(){
-        return $this->belongsToMany(Customer::class, 'customers_hobbies');
+        return $this->belongsToMany(Customer::class, 'customers_hobbies')->withTimestamps();
     }
 }

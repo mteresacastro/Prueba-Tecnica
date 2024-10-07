@@ -3,15 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Hobby;
 use App\Http\Controllers\AuthenticatedSessionsController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
-
-//Route::get('/', function () {
-//    return view('welcome')->name('home');
-//});
-
-//Si no devolvemos nada, podemos acortar la sintaxis asi:
 
 Route::view('/', 'welcome')->name('home');
 
@@ -20,34 +15,28 @@ Route::post('/login', [AuthenticatedSessionsController::class, 'store']);
 
 Route::post('/logout', [AuthenticatedSessionsController::class, 'destroy'])->name('logout');
 
+Route::middleware(['admin'])->group(function(){
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('/admin/dashboard', [AdminController::class, 'store'])->name('admin.store');
-Route::get('/admin/{customer}', [AdminController::class, 'show'])->name('admin.show');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/dashboard', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/{customer}', [AdminController::class, 'show'])->name('admin.show');
+    Route::get('/admin/{customer}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::patch('/admin/{customer}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/{customer}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
-
+});
 
 
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
 Route::patch('/customer/dashboard', [CustomerController::class, 'update'])->name('customer.update');
-//Route::patch('customer/{id}', [CustomerController::class, 'update'])->name('customer.update');
 
 
+Route::get('/customers-by-hobby/{hobby}', function ($hobbyId) {
+    $customers = Hobby::find($hobbyId)->customers()->get()->map(function ($customer) {
+        return $customer->name . ' ' . $customer->surname;
+    });
 
+    return response()->json($customers);
+});
 
-// Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
-//Route::get('blog/create', [PostController::class, 'create'])->name('posts.create');
-//Route::post('/blog', [PostController::class, 'store'])->name('posts.store');
-//Route::get('blog/{post}', [PostController::class, 'show'])->name('posts.show');
-//Route::get('blog/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
-//Route::patch('blog/{post}', [PostController::class, 'update'])->name('posts.update');
-//Route::delete('blog/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-
-
-
-//Route::post('/login', [AuthenticatedSessionsController::class, 'store']);
-//Route::post('/logout', [AuthenticatedSessionsController::class, 'destroy'])->name('logout');
-
-//Route::view('/register', 'auth.register')->name('register');
-//Route::post('/register', [RegisteredUserController::class, 'store']);

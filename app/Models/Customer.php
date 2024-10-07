@@ -18,7 +18,7 @@ class Customer extends Model
 
     public function hobbies()
     {
-        return $this->belongsToMany(Hobby::class, 'customers_hobbies');
+        return $this->belongsToMany(Hobby::class, 'customers_hobbies')->withTimestamps();
     }
 }
 
