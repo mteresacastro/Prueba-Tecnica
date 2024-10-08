@@ -20,6 +20,7 @@ return new class extends Migration
             $table->tinyInteger('status_id');
             $table->tinyInteger('profile_id');
             $table->text('password');
+            $table->softDeletes();
 
         });
 

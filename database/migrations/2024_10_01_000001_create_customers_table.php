@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

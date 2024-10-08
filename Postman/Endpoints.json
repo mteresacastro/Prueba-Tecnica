@@ -1,0 +1,242 @@
+{
+    "info": {
+        "name": "Mi Colección de API y Web",
+        "_postman_id": "12345678-1234-1234-1234-123456789012",
+        "description": "Colección de endpoints de la API y rutas web",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "API Endpoints",
+            "item": [
+                {
+                    "name": "Get Customers by Hobby",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/customers-by-hobby/:hobby",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "customers-by-hobby", ":hobby"],
+                            "variable": [
+                                {
+                                    "key": "hobby",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Web Routes",
+            "item": [
+                {
+                    "name": "Home Page",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/",
+                            "host": ["{{base_url}}"],
+                            "path": [""]
+                        }
+                    }
+                },
+                {
+                    "name": "Login Page",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["login"]
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["login"]
+                        }
+                    }
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/logout",
+                            "host": ["{{base_url}}"],
+                            "path": ["logout"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", "dashboard"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Create",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/create",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", "create"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Store",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", "dashboard"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Customers by Hobby",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/customers-by-hobby",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", "customers-by-hobby"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Generate PDF",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/generate-pdf",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", "generate-pdf"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Show Customer",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/:customer",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", ":customer"],
+                            "variable": [
+                                {
+                                    "key": "customer",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Edit Customer",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/:customer/edit",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", ":customer", "edit"],
+                            "variable": [
+                                {
+                                    "key": "customer",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Update Customer",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/:customer",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", ":customer"],
+                            "variable": [
+                                {
+                                    "key": "customer",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Delete Customer",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/admin/:customer",
+                            "host": ["{{base_url}}"],
+                            "path": ["admin", ":customer"],
+                            "variable": [
+                                {
+                                    "key": "customer",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Customer Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/customer/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["customer", "dashboard"]
+                        }
+                    }
+                },
+                {
+                    "name": "Customer Update Dashboard",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/customer/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["customer", "dashboard"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

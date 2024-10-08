@@ -19,9 +19,10 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('hobby_id');
+            $table->softDeletes();
 
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('hobby_id')->references('id')->on('hobbies')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('hobby_id')->references('id')->on('hobbies');
         });
     }
 

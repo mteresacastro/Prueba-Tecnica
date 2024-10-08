@@ -16,7 +16,6 @@
             <a href="{{route('admin.create')}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Crear nuevo cliente
             </a>
-
         </div>
         <div class="flex items-center justify-center m-4 ">
             <a href="{{route('admin.customers-by-hobby')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

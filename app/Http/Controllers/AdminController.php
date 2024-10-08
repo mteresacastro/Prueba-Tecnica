@@ -107,12 +107,14 @@ class AdminController extends Controller
 
         $customers = collect();
         $selectedHobby = null;
+        $selectedHobbyName = null;
 
         if ($request->has('hobby')){
             $selectedHobby = $request->input('hobby');
+            $selectedHobbyName = Hobby::find($selectedHobby);
             $customers = Hobby::find($selectedHobby)->customers()->get();
         }
-        return view('admin.customers-by-hobby', ['hobbies'=> $hobbies, 'customers' => $customers, 'selectedHobby' => $selectedHobby]);
+        return view('admin.customers-by-hobby', ['hobbies'=> $hobbies, 'customers' => $customers, 'selectedHobby' => $selectedHobby, 'selectedHobbyName' => $selectedHobbyName]);
 
     }
 
