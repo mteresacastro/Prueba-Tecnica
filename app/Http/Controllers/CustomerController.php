@@ -16,10 +16,11 @@ class CustomerController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-
+        $hobbies = Hobby::all();
         $customer = Customer::where('user_id', Auth::id())->first();
+        $customerHobbies = $customer->hobbies->pluck('id')->toArray();
 
-        return view('customer.dashboard', ['customer' => $customer, 'user' => $user]);
+        return view('customer.dashboard', ['customer' => $customer, 'user' => $user, 'hobbies' => $hobbies, 'customerHobbies' => $customerHobbies]);
     }
 
     public function update(Request $request)
@@ -27,16 +28,19 @@ class CustomerController extends Controller
         $customer = Customer::where('user_id', Auth::id())->first();
         $user = Auth::user();
 
+
+
         $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'email' => [
+            'hobbies'=> 'array'
+            /*'email' => [
                 'required',
                 'string',
                 'email',
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
-            ],
+            ],*/
         ]);
 
         /*duda, como poner la validacion de email, unico.
@@ -47,21 +51,21 @@ class CustomerController extends Controller
 
 
         //verifica que $customer y $user no sean null
-        if ($customer && $user) {
-            $customer->update([
-                'name' => $request->name,
-                'surname' => $request->surname,
-            ]);
+
+        $customer->update([
+            'name' => $request->name,
+            'surname' => $request->surname,
+
+        ]);
 
 
-            $user->email = $request->email;
-            $user->save();
+            // Sincronizar los hobbies
+        $customer->hobbies()->sync($request->input('hobbies', []));
 
 
-            return redirect()->route('customer.dashboard')->with('status', 'Datos actualizados correctamente');
-        } else{
-            return redirect()->route('customer.dashboard')->with('error','No se pudieron actualizar los datos');
-        }
+        return redirect()->route('customer.dashboard')->with('status', 'Datos actualizados correctamente');
     }
 
 }
+
+

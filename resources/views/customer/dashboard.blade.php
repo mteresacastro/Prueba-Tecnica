@@ -11,14 +11,25 @@
     <h2 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Editar mis datos</h2>
     <div class="flex flex-col items-center justify-between mt-4">
         <div class="space-y-4">
-            <label class="text-slate-500 flex flex-col" for="email">Email</label>
-            <input class="rounded-md shadow-sm text-slate-500 dark:text-slate-500 dark:placeholder:text-slate-600" type="email" id="email" name="email" value="{{$user->email}}" required>
 
             <label class="text-slate-500 flex flex-col" for="name">Nombre</label>
             <input class="rounded-md shadow-sm text-slate-500 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="name" name="name" value="{{$customer->name}}" required>
 
             <label class="text-slate-500 flex flex-col" for="surname">Apellidos</label>
             <input class="rounded-md shadow-sm text-slate-500 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="surname" name="surname" value="{{$customer->surname}}" required>
+
+            <div class="grid grid-cols-2 gap-4">
+                <span class="font-serif text-slate-600 dark:text-slate-400 col-span-2">Hobbies</span>
+            @foreach($hobbies as $hobby)
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="hobbies[]" value="{{ $hobby->id }}" class="form-checkbox" {{ in_array($hobby->id, $customerHobbies) ? 'checked' : '' }}>
+                    <span class="ml-2 text-white">{{ ucfirst($hobby->name) }}</span>
+                </label>
+            @endforeach
+            </div>
+                @error('hobbies')
+                    <small class="font-bold text-red-500/80">{{ $message }}</small>
+                @enderror
         </div>
         <div class="space-y-4">
             <button class="mt-4 items-center px-4 py-2 bg-sky-700 hover:bg-sky-900 rounded active:bg-sky-800 focus:outline-none focus:border-sky-500 text-sky-200" type="submit">Actualizar</button>
