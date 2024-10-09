@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Dompdf\Dompdf;
 use App\Models\Customer;
+use Dompdf\Options;
 
 class PDFController extends Controller
 {
     public function generatePDF()
     {
         $customers = Customer::with('hobbies')->get();
+        //$logoUrl = asset('images/logo.png');
 
-        $logoUrl = asset('images/logo.png'); 
+        //IMPOSIBLE DE VER IMAGEN EN OTRO FORMATO, TENGO QUE PASARLA A BASE64, COMO OCUPA MUCHO, LO PASO AL .ENV
+        $logoBase64 = env('LOGO_BASE64');
 
         // Creo el contenido que quiero mostrar
         $html = '
@@ -38,8 +41,8 @@ class PDFController extends Controller
                     left: 0px;
                     right: 0px;
                     height: 50px;
-                    background-color: #03a9f4;
-                    color: white;
+                    background-color: transparent;
+                    color: black;
                     text-align: center;
                     line-height: 35px;
                 }
@@ -50,10 +53,10 @@ class PDFController extends Controller
         </head>
         <body>
             <header>
-                <img src="'.$logoUrl.'" alt="Logo" height="50">
+                <img src="'.$logoBase64.'" alt="Logo333" height="50">
             </header>
             <footer>
-                Página {PAGE_NUM} de {PAGE_COUNT}
+
             </footer>
             <main>
                 <h1>Listado de Clientes y sus Hobbies</h1>
@@ -72,9 +75,11 @@ class PDFController extends Controller
         </body>
         </html>';
 
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
         // Reemplaza los marcadores de posición por valores reales
