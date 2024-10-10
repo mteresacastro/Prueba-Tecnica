@@ -24,6 +24,7 @@
                 @method('DELETE')
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Eliminar cliente</button>
         </form>
+       
     </div>
     <div class="max-w-full flex p-4 items-center justify-center bg-white rounded shadow text-white dark:bg-slate-800 gap-4">
         <div class="flex items-center justify-center m-4">

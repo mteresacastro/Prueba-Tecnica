@@ -22,6 +22,9 @@
                 Buscar clientes por Hobby
             </a>
         </div>
+        <a href="{{route('admin.createHobby')}}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                Añadir nuevo hobby
+        </a>
     </div>
 
     @foreach ($customers as $customer)
@@ -34,7 +37,12 @@
             </ul>
         </div>
     @endforeach
-     >
+
+     <div class="flex items-center justify-center gap-4">
+        <a href="{{route('admin.generate-pdf')}}" class="text-red-600 bg-white font-bold py-2 px-4 rounded">
+                Generar listado en PDF
+        </a>
+    </div>
 </main>
 
 

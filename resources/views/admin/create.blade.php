@@ -1,5 +1,16 @@
 <x-layouts.app title="Create" meta-description="Create meta description">
-    <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Crear nuevo cliente</h1>
+
+    <header class="px-6 py-4 space-y-2">
+        <div class="flex justify-between">
+            <a class="text-white hover:underline" href="{{route('admin.dashboard')}}">Volver</a>
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button class="text-white hover:underline">Cerrar sesión</button>
+            </form>
+        </div>
+
+        <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Crear nuevo cliente</h1>
+    </header>
 
     <form class="max-w-xl px-8 py-4 mx-auto bg-white rounded shadow dark:bg-slate-800" action="{{route('admin.store')}}" method="POST">
     @csrf

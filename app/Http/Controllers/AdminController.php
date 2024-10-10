@@ -97,7 +97,6 @@ class AdminController extends Controller
         return to_route('admin.dashboard')->with('status', 'Cliente eliminado con éxito');
     }
 
-
     public function selectHobby(Request $request)
     {
         $hobbies = Hobby::all()->map(function ($hobby) {
