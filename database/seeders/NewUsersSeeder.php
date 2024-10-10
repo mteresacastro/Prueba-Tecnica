@@ -2,14 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use App\Models\User;
-use App\Models\Hobby;
-use App\Models\Customer;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Carbon\Carbon;
 
 
 class NewUsersSeeder extends Seeder
