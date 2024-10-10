@@ -65,7 +65,7 @@ class PDFController extends Controller
         foreach ($customers as $customer) {
             $html .= '<li>' . $customer->name . ' ' . $customer->surname . ': ';
             $html .= implode(', ', $customer->hobbies->pluck('name')->toArray());
-            $html .= '</li>';
+            $html .= '.</li>';
         }
 
         $html .= '
