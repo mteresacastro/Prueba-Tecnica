@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // $schedule->command('inspire')->hourly(); Aquí configuro que se actualice cada hora.
+        $schedule->command('hobbies:dispatch')->hourly();
     }
 
     /**

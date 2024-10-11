@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\HobbyController;
+use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,8 @@ Route::middleware(['admin'])->group(function(){
 
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
 Route::patch('/customer/dashboard', [CustomerController::class, 'update'])->name('customer.update');
+
+Route::get('/hobbiesFromApi/{userId}', [HobbyController::class, 'hobbiesFromApi'])->name('hobbiesFromApi');
 
 
 
