@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Hobby;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\customersHobbiesExport;
 
 use Illuminate\Http\Request;
 
@@ -44,31 +46,30 @@ class HobbyController extends Controller
 
         //return view('hobbiesFromApi', compact('data'));
 
-        $this->procesarDatos($data);
+        $this->syncData($data);
     }
 
-    protected function procesarDatos($data)
-{
-    $userId = $data['customer_id'];
-    $hobbiesData = $data['hobbies'];
+    protected function syncData($data){
 
-    // Obtener el cliente, a traves de user_id, para relacionar usuario y customers
-    $customer = Customer::where('user_id', $userId)->first();
+        $userId = $data['customer_id'];
+        $hobbiesData = $data['hobbies'];
 
-    if ($customer) {
-        // Obtener los IDs de los hobbies
-        $hobbyIds = [];
+        // Obtener el cliente, a traves de user_id, para relacionar usuario y customers
+        $customer = Customer::where('user_id', $userId)->first();
 
-        foreach ($hobbiesData as $hobbyData) {
-            $hobby = Hobby::firstOrCreate(['name' => $hobbyData['name']]);
-            $hobbyIds[] = $hobby->id;
+        if ($customer) {
+            // Obtener los IDs de los hobbies
+            $hobbyIds = [];
+
+            foreach ($hobbiesData as $hobbyData) {
+                $hobby = Hobby::firstOrCreate(['name' => $hobbyData['name']]);
+                $hobbyIds[] = $hobby->id;
+            }
+
+            // Sincronizar los hobbies del cliente
+            $customer->hobbies()->sync($hobbyIds);
+        } else {
+            throw new \Exception("Cliente no encontrado.");
         }
-
-        // Sincronizar los hobbies del cliente
-        $customer->hobbies()->sync($hobbyIds);
-    } else {
-        throw new \Exception("Cliente no encontrado.");
     }
-}
-
 }

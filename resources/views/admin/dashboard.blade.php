@@ -37,11 +37,17 @@
             </ul>
         </div>
     @endforeach
-
-     <div class="flex items-center justify-center gap-4">
-        <a href="{{route('admin.generate-pdf')}}" class="text-red-600 bg-white font-bold py-2 px-4 rounded">
-                Generar listado en PDF
-        </a>
+    <div class="flex items-center justify-center gap-4 m-4">
+        <div class="flex items-center justify-center gap-4">
+            <a href="{{route('admin.generate-pdf')}}" class="text-red-600 bg-white font-bold py-2 px-4 rounded">
+                    Generar listado en PDF
+            </a>
+        </div>
+        <div class="flex items-center justify-center gap-4">
+            <a href="{{route('admin.generate-pdf')}}" class="text-green-700 bg-white font-bold py-2 px-4 rounded">
+                    Generar listado en CSV
+            </a>
+        </div>
     </div>
 </main>
 

@@ -4,12 +4,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\HobbyController;
-use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\ExportCSVController;
+use App\Http\Controllers\AuthenticatedSessionsController;
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AuthenticatedSessionsController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+
+
 
 
 Route::view('/', 'welcome')->name('home');
@@ -25,7 +26,8 @@ Route::middleware(['admin'])->group(function(){
 
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
     Route::post('/admin/dashboard', [AdminController::class, 'store'])->name('admin.store');
-    Route::get('/admin/customers-by-hobby', [AdminController::class, 'selectHobby'])->name('admin.customers-by-hobby');Route::get('admin/generate-pdf', [PDFController::class, 'generatePDF'])->name('admin.generate-pdf');
+    Route::get('/admin/customers-by-hobby', [AdminController::class, 'selectHobby'])->name('admin.customers-by-hobby');Route::get('/admin/generate-pdf', [PDFController::class, 'generatePDF'])->name('admin.generate-pdf');
+    Route::get('/admin/export-csv', [ExportCSVController::class, 'export'])->name('admin.export-csv');
     Route::get('/admin/createHobby',[HobbyController::class, 'create'])->name('admin.createHobby');
     Route::post('/admin/storeHobby',[HobbyController::class, 'store'])->name('admin.storeHobby');
 
@@ -41,7 +43,6 @@ Route::middleware(['admin'])->group(function(){
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
 Route::patch('/customer/dashboard', [CustomerController::class, 'update'])->name('customer.update');
 
-Route::get('/hobbiesFromApi/{userId}', [HobbyController::class, 'hobbiesFromApi'])->name('hobbiesFromApi');
 
 
 

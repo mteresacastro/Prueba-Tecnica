@@ -36,8 +36,11 @@ services:
     volumes:
       - ./:/var/www/html/
     entrypoint: ["sh", "-c", "while true; do php /var/www/html/artisan schedule:run; sleep 60; done"]
+    networks:
+      - prueba-servidor-web
     depends_on:
       - app
+      - mysql
 
 networks:
   prueba-servidor-web:
