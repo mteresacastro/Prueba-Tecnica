@@ -17,6 +17,7 @@ class customersHobbiesExport implements FromCollection, WithHeadings, WithCustom
         return Customer::with('hobbies')->get()->map(function($customer) {
             return [
                 'Nombre del Cliente' => mb_convert_encoding($customer->name, 'UTF-8', 'auto'),
+                'Apellidos del Cliente'=> mb_convert_encoding($customer->surname,'UTF-8', 'auto'),
                 'Lista de Hobbies' => mb_convert_encoding($customer->hobbies->pluck('name')->implode(', '), 'UTF-8', 'auto')
 
             ];
@@ -27,7 +28,7 @@ class customersHobbiesExport implements FromCollection, WithHeadings, WithCustom
 // Esto añade nombre a las columnas
     public function headings(): array
     {
-        return ['Nombre del Cliente', 'Lista de Hobbies'];
+        return ['Nombre del Cliente', 'Apellidos del Cliente', 'Lista de Hobbies'];
     }
 
 //Esto divide las columnas

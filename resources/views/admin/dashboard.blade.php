@@ -44,7 +44,7 @@
             </a>
         </div>
         <div class="flex items-center justify-center gap-4">
-            <a href="{{route('admin.generate-pdf')}}" class="text-green-700 bg-white font-bold py-2 px-4 rounded">
+            <a href="{{route('admin.export-csv')}}" class="text-green-700 bg-white font-bold py-2 px-4 rounded">
                     Generar listado en CSV
             </a>
         </div>
