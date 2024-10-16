@@ -22,9 +22,11 @@
                 Buscar clientes por Hobby
             </a>
         </div>
-        <a href="{{route('admin.createHobby')}}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-                Añadir nuevo hobby
-        </a>
+        <div class="flex items-center justify-center m-4 ">
+            <a href="{{route('admin.createHobby')}}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                    Añadir nuevo hobby
+            </a>
+        </div>
     </div>
 
     @foreach ($customers as $customer)
