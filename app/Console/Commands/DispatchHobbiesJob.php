@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\UpdateCustomerHobbiesJob;
+use App\Models\Customer;
 use Illuminate\Console\Command;
 
 class DispatchHobbiesJob extends Command
@@ -28,9 +29,9 @@ class DispatchHobbiesJob extends Command
      */
     public function handle()
     {
-        $userIds = [1,2,3,4];
+        $all_users_ids = Customer::all()->pluck('user_id')->toArray();
 
-        foreach ($userIds as $userId) {
+        foreach ($all_users_ids as $userId) {
             UpdateCustomerHobbiesJob::dispatch($userId);
         }
 
