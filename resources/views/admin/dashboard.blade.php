@@ -4,7 +4,7 @@
 <header class="px-6 py-4 space-y-2">
     <form action="{{route('logout')}}" method="POST" class="text-right">
         @csrf
-        <button class="text-white">Cerrar sesión</button>
+        <button class="text-slate-800 dark:text-white">Cerrar sesión</button>
     </form>
 
     <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Panel de control Administrador</h1>

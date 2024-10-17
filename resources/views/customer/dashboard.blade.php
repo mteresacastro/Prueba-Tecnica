@@ -1,7 +1,7 @@
 
 <x-layouts.app title="Dashboard" meta-description="Dashboard meta description">
 
-<a class="text-sm font-semibold underline border-2 text-center text-sky-600 border-transparent focus:border-slate-500 focus:outline-none display-block" href="{{route('login')}}" > Salir </a>
+<a class="text-sm text-slate-800 dark:text-white font-semibold underline border-2 text-center border-transparent focus:border-slate-500 focus:outline-none display-block" href="{{route('login')}}" > Salir </a>
 
 <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Panel de control Cliente</h1>
 
@@ -23,7 +23,7 @@
             @foreach($hobbies as $hobby)
                 <label class="inline-flex items-center">
                     <input type="checkbox" name="hobbies[]" value="{{ $hobby->id }}" class="form-checkbox" {{ in_array($hobby->id, $customerHobbies) ? 'checked' : '' }}>
-                    <span class="ml-2 text-white">{{ ucfirst($hobby->name) }}</span>
+                    <span class="ml-2 text-slate-800 dark:text-white">{{ ucfirst($hobby->name) }}</span>
                 </label>
             @endforeach
             </div>
