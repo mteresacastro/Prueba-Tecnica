@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Hobby;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class HobbyService
 {
@@ -13,11 +14,16 @@ class HobbyService
 
         $url = env('URL_SERVER_API');
         $response = Http::get($url.'index.php?user_id='.$userId);
-        $data = $response->json();
 
-        //return view('hobbiesFromApi', compact('data'));
 
-        $this->syncData($data);
+        //return view('hobbiesFromApi', compact('data'))
+
+        if ($response->ok()) {
+            $data = $response->json();
+            $this->syncdata($data);
+        } else {
+            Log::error($response->json());
+        }
     }
 
     protected function syncData($data){
