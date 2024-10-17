@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\HobbyController;
+use App\Services\HobbyService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,10 +31,10 @@ class UpdateCustomerHobbiesJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(HobbyController $hobbyController)
+    public function handle(HobbyService $hobbyService)
     {
         Log::info("Actualizando hobbies para el usuario: {$this->userId}");
-        $hobbyController->hobbiesFromApi($this->userId);
-        
+        $hobbyService->hobbiesFromApi($this->userId);
+
     }
 }
