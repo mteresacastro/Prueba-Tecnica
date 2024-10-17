@@ -2,10 +2,10 @@
 
     <header class="px-6 py-4 space-y-2">
         <div class="flex justify-between">
-            <a class="text-white hover:underline" href="{{route('admin.dashboard')}}">Volver</a>
+            <a class="text-slate-800 dark:text-white hover:underline" href="{{route('admin.dashboard')}}">Volver</a>
             <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button class="text-white hover:underline">Cerrar sesión</button>
+                <button class="text-slate-800 dark:text-white hover:underline">Cerrar sesión</button>
             </form>
         </div>
 

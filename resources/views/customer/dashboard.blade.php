@@ -1,7 +1,7 @@
 
 <x-layouts.app title="Dashboard" meta-description="Dashboard meta description">
 
-<a class="text-sm font-semibold underline border-2 text-center text-sky-600 border-transparent focus:border-slate-500 focus:outline-none display-block" href="{{route('login')}}" > Salir </a>
+<a class="text-sm  font-semibold underline border-2 text-center text-slate-800 border-transparent focus:border-slate-500 focus:outline-none display-block" href="{{route('login')}}" > Salir </a>
 
 <h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Panel de control Cliente</h1>
 
@@ -12,18 +12,18 @@
     <div class="flex flex-col items-center justify-between mt-4">
         <div class="space-y-4">
 
-            <label class="text-slate-500 flex flex-col" for="name">Nombre</label>
-            <input class="rounded-md shadow-sm text-slate-500 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="name" name="name" value="{{$customer->name}}" required>
+            <label class="text-slate-800 flex flex-col" for="name">Nombre</label>
+            <input class="rounded-md shadow-sm text-slate-800 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="name" name="name" value="{{$customer->name}}" required>
 
-            <label class="text-slate-500 flex flex-col" for="surname">Apellidos</label>
-            <input class="rounded-md shadow-sm text-slate-500 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="surname" name="surname" value="{{$customer->surname}}" required>
+            <label class="text-slate-800 flex flex-col" for="surname">Apellidos</label>
+            <input class="rounded-md shadow-sm text-slate-800 dark:text-slate-500 dark:placeholder:text-slate-600" type="text" id="surname" name="surname" value="{{$customer->surname}}" required>
 
             <div class="grid grid-cols-2 gap-4">
-                <span class="font-serif text-slate-600 dark:text-slate-400 col-span-2">Hobbies</span>
+                <span class="font-serif text-slate-800 dark:text-slate-400 col-span-2">Hobbies</span>
             @foreach($hobbies as $hobby)
                 <label class="inline-flex items-center">
                     <input type="checkbox" name="hobbies[]" value="{{ $hobby->id }}" class="form-checkbox" {{ in_array($hobby->id, $customerHobbies) ? 'checked' : '' }}>
-                    <span class="ml-2 text-white">{{ ucfirst($hobby->name) }}</span>
+                    <span class="ml-2 text-slate-800">{{ ucfirst($hobby->name) }}</span>
                 </label>
             @endforeach
             </div>

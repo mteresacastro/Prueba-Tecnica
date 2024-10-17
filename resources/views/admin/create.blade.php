@@ -2,10 +2,10 @@
 
     <header class="px-6 py-4 space-y-2">
         <div class="flex justify-between">
-            <a class="text-white hover:underline" href="{{route('admin.dashboard')}}">Volver</a>
+            <a class="dark:text-white text-slate-800 hover:underline" href="{{route('admin.dashboard')}}">Volver</a>
             <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button class="text-white hover:underline">Cerrar sesión</button>
+                <button class="dark:text-white text-slate-800 hover:underline">Cerrar sesión</button>
             </form>
         </div>
 
@@ -38,7 +38,7 @@
             @foreach($hobbies as $hobby)
                 <label class="inline-flex items-center">
                     <input type="checkbox" name="hobbies[]" value="{{ $hobby->id }}" class="form-checkbox">
-                    <span class="ml-2 text-white">{{ ucfirst($hobby->name) }}</span>
+                    <span class="ml-2 text-slate-800 dark:text-white">{{ ucfirst($hobby->name) }}</span>
                 </label>
             @endforeach
         </div>
